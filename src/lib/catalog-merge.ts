@@ -107,6 +107,23 @@ export function writeCatalog(outPath: string, catalog: CatalogDocument): void {
   fs.writeFileSync(outPath, `${JSON.stringify(catalog, null, 2)}\n`);
 }
 
+/** Copy packed works that ship beside catalog.json (relative vyviewUrl). */
+export function copyCatalogWorks(publisherDir: string, distDir: string): void {
+  const from = path.join(publisherDir, "works");
+  if (!fs.existsSync(from)) return;
+  for (const name of fs.readdirSync(from)) {
+    const src = path.join(from, name);
+    if (!fs.statSync(src).isDirectory()) continue;
+    const to = path.join(distDir, name);
+    fs.mkdirSync(to, { recursive: true });
+    for (const file of fs.readdirSync(src)) {
+      const fileSrc = path.join(src, file);
+      if (!fs.statSync(fileSrc).isFile()) continue;
+      fs.copyFileSync(fileSrc, path.join(to, file));
+    }
+  }
+}
+
 /** Copy shared CSS next to the catalog so the Pages site can serve it. */
 export function copyPublisherStyles(publisherDir: string, distDir: string): void {
   const from = path.join(publisherDir, "styles");

@@ -16,6 +16,7 @@ import path from "node:path";
 import { parseArgs } from "../src/lib/cli-args";
 import {
   catalogFromFragments,
+  copyCatalogWorks,
   copyPublisherStyles,
   loadPublisherIdentity,
   shellCatalog,
@@ -36,6 +37,7 @@ import {
 
 const PUBLISHER_TOML = path.resolve("sa_wikisource/publisher.toml");
 const SOURCES_TOML = path.resolve("data/sources.toml");
+const FRAGMENTS_DIR = path.resolve("data/fragments");
 
 const HELP = `Usage:
   bun run work sources
@@ -57,6 +59,9 @@ Examples:
   bun run work merge-catalog --out sa_wikisource/dist/catalog.json
   bun run work release bhagavata-purana --root ../content-puranas --repo vyasa-sa-wikisource/content-puranas
   bun run work release bhagavata-purana --root ../content-puranas --repo vyasa-sa-wikisource/content-puranas --yes
+
+With no --fragment, every JSON file in data/fragments is merged. An empty
+directory writes the publisher shell.
 `;
 
 function uniqueWorks(works: WorkRow[]): WorkRow[] {
@@ -241,9 +246,9 @@ function cmdMerge(fragments: string[], out: string | undefined, dryRun: boolean)
     );
   }
   if (!fs.existsSync(PUBLISHER_TOML)) throw new Error(`Missing ${PUBLISHER_TOML}`);
+  const paths = fragments.length > 0 ? fragments : defaultFragmentPaths();
   const identity = loadPublisherIdentity(PUBLISHER_TOML);
-  const catalog =
-    fragments.length === 0 ? shellCatalog(identity) : catalogFromFragments(identity, fragments);
+  const catalog = paths.length === 0 ? shellCatalog(identity) : catalogFromFragments(identity, paths);
   console.log(`publications: ${catalog.publications.length}`);
   for (const pub of catalog.publications) console.log(`  ${pub.id}\t${pub.vyviewUrl}`);
   if (dryRun) {
@@ -251,8 +256,20 @@ function cmdMerge(fragments: string[], out: string | undefined, dryRun: boolean)
     return;
   }
   writeCatalog(out, catalog);
-  copyPublisherStyles(path.dirname(PUBLISHER_TOML), path.dirname(path.resolve(out)));
+  const publisherDir = path.dirname(PUBLISHER_TOML);
+  const distDir = path.dirname(path.resolve(out));
+  copyPublisherStyles(publisherDir, distDir);
+  copyCatalogWorks(publisherDir, distDir);
   console.log(`wrote ${out}`);
+}
+
+function defaultFragmentPaths(): string[] {
+  if (!fs.existsSync(FRAGMENTS_DIR)) return [];
+  return fs
+    .readdirSync(FRAGMENTS_DIR)
+    .filter((name) => name.endsWith(".json"))
+    .sort()
+    .map((name) => path.join(FRAGMENTS_DIR, name));
 }
 
 function main(): void {

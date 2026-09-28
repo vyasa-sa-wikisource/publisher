@@ -1,0 +1,14 @@
+{
+  "publications": [
+    {
+      "id": "bhagavata-purana",
+      "title": "श्रीमद्भागवतपुराणम्",
+      "vyviewUrl": "bhagavata-purana/bhagavata-purana.vyview",
+      "updated": 1790561894,
+      "description": "Śrīmad Bhāgavata Purāṇa from Sanskrit Wikisource",
+      "type": "work",
+      "language": "sa",
+      "license": "CC-BY-SA-4.0"
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "publications": [
+    {
+      "id": "rigveda",
+      "title": "ऋग्वेदः",
+      "vyviewUrl": "https://project-vyasa.github.io/sa.wikisource.org/rigveda/rigveda.vyview",
+      "updated": 1789339136,
+      "description": "Rig Veda Samhita, Padapatha, and Sayanacharya Bhashya from Sanskrit Wikisource",
+      "type": "work",
+      "language": "sa",
+      "license": "CC-BY-SA-4.0"
+    },
+    {
+      "id": "ashtadhyayi",
+      "title": "अष्टाध्यायी",
+      "vyviewUrl": "https://project-vyasa.github.io/sa.wikisource.org/ashtadhyayi/ashtadhyayi.vyview",
+      "updated": 1789241042,
+      "description": "Pāṇini's Aṣṭādhyāyī (sūtra text and Hindi vyākhyā) from Sanskrit Wikisource",
+      "type": "work",
+      "language": "sa",
+      "license": "CC-BY-SA-4.0"
+    },
+    {
+      "id": "taittiriya-samhita",
+      "title": "तैत्तिरीयसंहिता",
+      "vyviewUrl": "https://project-vyasa.github.io/sa.wikisource.org/taittiriya-samhita/taittiriya-samhita.vyview",
+      "updated": 1790299367,
+      "description": "Taittirīya Saṃhitā (accented) from Sanskrit Wikisource — Kṛṣṇa Yajurveda",
+      "type": "work",
+      "language": "sa",
+      "license": "CC-BY-SA-4.0"
+    },
+    {
+      "id": "taittiriya-aranyaka",
+      "title": "तैत्तिरीयारण्यकम्",
+      "vyviewUrl": "https://project-vyasa.github.io/sa.wikisource.org/taittiriya-aranyaka/taittiriya-aranyaka.vyview",
+      "updated": 1790299369,
+      "description": "Taittirīya Āraṇyaka from Sanskrit Wikisource (accented, 8 praśnas). Śikṣāvallī is praśna 5; Mahānārāyaṇa is praśna 6; Puruṣa sūkta is 3.12. The Brahmānanda and Bhṛgu vallīs of 10-prapāṭhaka printed editions are not in this source.",
+      "type": "work",
+      "language": "sa",
+      "license": "CC-BY-SA-4.0"
+    },
+    {
+      "id": "taittiriya-brahmana",
+      "title": "तैत्तिरीयब्राह्मणम्",
+      "vyviewUrl": "https://project-vyasa.github.io/sa.wikisource.org/taittiriya-brahmana/taittiriya-brahmana.vyview",
+      "updated": 1790299374,
+      "description": "Taittirīya Brāhmaṇa from Sanskrit Wikisource (accented). Covers kāṇḍas 1.1–1.8, 2.1–2.8, and 3.1–3.9. Praśnas 3.10–3.12 found in some editions are not in this dump.",
+      "type": "work",
+      "language": "sa",
+      "license": "CC-BY-SA-4.0"
+    },
+    {
+      "id": "taittiriya-pratisakhya",
+      "title": "तैत्तिरीयप्रातिशाख्यम्",
+      "vyviewUrl": "https://project-vyasa.github.io/sa.wikisource.org/taittiriya-pratisakhya/taittiriya-pratisakhya.vyview",
+      "updated": 1790299374,
+      "description": "Taittirīya-Prātiśākhya (sūtra text) from Sanskrit Wikisource",
+      "type": "work",
+      "language": "sa",
+      "license": "CC-BY-SA-4.0"
+    },
+    {
+      "id": "kauthuma-samhita",
+      "title": "सामवेदः (कौथुमीया)",
+      "vyviewUrl": "https://project-vyasa.github.io/sa.wikisource.org/kauthuma-samhita/kauthuma-samhita.vyview",
+      "updated": 1790143822,
+      "description": "Kauthuma Sāmaveda saṃhitā (accented) from Sanskrit Wikisource",
+      "type": "work",
+      "language": "sa",
+      "license": "CC-BY-SA-4.0"
+    },
+    {
+      "id": "atharvaveda-saunaka",
+      "title": "अथर्ववेदः (शौनक)",
+      "vyviewUrl": "https://project-vyasa.github.io/sa.wikisource.org/atharvaveda-saunaka/atharvaveda-saunaka.vyview",
+      "updated": 1790178368,
+      "description": "Atharvaveda Śaunaka saṃhitā from Sanskrit Wikisource consolidated kāṇḍa pages",
+      "type": "work",
+      "language": "sa",
+      "license": "CC-BY-SA-4.0"
+    },
+    {
+      "id": "kaushitaki-brahmana",
+      "title": "कौषीतकिब्राह्मणम्",
+      "vyviewUrl": "https://project-vyasa.github.io/sa.wikisource.org/kaushitaki-brahmana/kaushitaki-brahmana.vyview",
+      "updated": 1790281931,
+      "description": "Kaushitaki (Śāṅkhāyana) Brāhmaṇa from Sanskrit Wikisource adhyāya pages",
+      "type": "work",
+      "language": "sa",
+      "license": "CC-BY-SA-4.0"
+    },
+    {
+      "id": "gopatha-brahmana",
+      "title": "गोपथब्राह्मणम्",
+      "vyviewUrl": "https://project-vyasa.github.io/sa.wikisource.org/gopatha-brahmana/gopatha-brahmana.vyview",
+      "updated": 1790299659,
+      "description": "Gopatha Brāhmaṇa (Atharvaveda) from Sanskrit Wikisource — kāṇḍas 1–2 in current dump",
+      "type": "work",
+      "language": "sa",
+      "license": "CC-BY-SA-4.0"
+    },
+    {
+      "id": "panchavimsha-brahmana",
+      "title": "पञ्चविंशब्राह्मणम्",
+      "vyviewUrl": "https://project-vyasa.github.io/sa.wikisource.org/panchavimsha-brahmana/panchavimsha-brahmana.vyview",
+      "updated": 1790299706,
+      "description": "Pañcaviṃśa Brāhmaṇa (Sāmaveda) from Sanskrit Wikisource adhyāya pages",
+      "type": "work",
+      "language": "sa",
+      "license": "CC-BY-SA-4.0"
+    },
+    {
+      "id": "vedanga-jyotisha",
+      "title": "वेदाङ्गज्योतिषम्",
+      "vyviewUrl": "https://project-vyasa.github.io/sa.wikisource.org/vedanga-jyotisha/vedanga-jyotisha.vyview",
+      "updated": 1790300052,
+      "description": "Vedāṅga Jyotiṣa (Ārca + Yājuṣa) from Sanskrit Wikisource",
+      "type": "work",
+      "language": "sa",
+      "license": "CC-BY-SA-4.0"
+    }
+  ]
+}
