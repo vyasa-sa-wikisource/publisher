@@ -1,0 +1,13 @@
+[publisher]
+identifier = "sa_wikisource"
+title = "Sanskrit Wikisource (विकिस्रोतः)"
+url = "https://sa.wikisource.org"
+catalog_url = "https://vyasa-sa-wikisource.github.io/publisher/catalog.json"
+description = "Open-access Sanskrit texts from Wikimedia Wikisource: Rig Veda, Taittirīya (Kṛṣṇa Yajur) family, Sāmaveda (Kauthuma) + Pañcaviṃśa, Atharvaveda (Śaunaka) + Gopatha, Kaushitaki, Aṣṭādhyāyī, and related Vedāṅga."
+content_themes = ["light", "dark", "parchment"]
+
+[curation]
+maintainer = "Project Vyasa Core Team"
+license = "CC-BY-SA-4.0"
+source_type = "mediawiki"
+primary_corpus = "Rig Veda (ऋग्वेदः)"

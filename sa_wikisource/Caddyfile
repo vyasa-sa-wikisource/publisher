@@ -1,0 +1,27 @@
+# Local catalog server. Run this file's directory so these roots stay relative:
+#   cd publisher/sa_wikisource && caddy run
+#
+# publisher and content-puranas are sibling clones. vyasac publish writes
+# the .vyview and catalog.json into ./dist from the content repo.
+#
+#   http://localhost:9100/registry.json
+#   http://localhost:9100/catalog.json
+
+:9100 {
+	header {
+		Access-Control-Allow-Origin "*"
+		Access-Control-Allow-Methods "GET, OPTIONS"
+		Access-Control-Allow-Headers "*"
+	}
+
+	handle /registry.json {
+		root * .
+		rewrite * /local-registry.json
+		file_server
+	}
+
+	handle {
+		root * dist
+		file_server
+	}
+}

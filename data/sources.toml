@@ -1,0 +1,16 @@
+# Index of registry slices. Each content repo owns its own data/wikisource-works.toml.
+# role = "transitional" is the live monorepo registry until that work-set moves.
+# role = "cloned" is a content repo checked out beside this hub.
+# role = "planned" is not cloned yet.
+
+[[source]]
+id = "monorepo"
+github = "project-vyasa/sa.wikisource.org"
+slice = "data/wikisource-works.toml"
+role = "transitional"
+
+[[source]]
+id = "content-puranas"
+github = "vyasa-sa-wikisource/content-puranas"
+slice = "data/wikisource-works.toml"
+role = "cloned"

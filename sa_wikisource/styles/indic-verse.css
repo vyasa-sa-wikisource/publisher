@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700&family=Noto+Serif+Devanagari:wght@400;500;700&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+	/*
+	  Vedic udātta/anudātta (U+0951/U+0952) need mark-to-base positioning.
+	  The Google Fonts Noto Sans Devanagari woff2 includes those codepoints
+	  but not the lookups, so the shaper paints a dotted circle. Prefer
+	  desktop Devanagari faces that ship with the OS, then Noto Serif.
+	*/
+	--vyasa-font-deva: "ITF Devanagari", "Kohinoor Devanagari", "Devanagari Sangam MN", "Devanagari MT", "Nirmala UI", "Sanskrit Text", "Noto Serif Devanagari", "Noto Sans Devanagari", sans-serif;
+	--vyasa-font-body: "Noto Serif", serif;
+	--vyasa-stream-body-size: 1.05rem;
+	--vyasa-stream-body-line: 1.5;
+	--vyasa-stream-body-weight: 500;
+	--vyasa-stream-body-color: #334155;
+	--vyasa-stream-commentary-size: 0.95rem;
+	--vyasa-stream-commentary-line: 1.5;
+	--vyasa-stream-commentary-color: #4a5568;
+	--vyasa-content-max-width: 48rem;
+	--vyasa-paper: #fcfcfc;
+	--vyasa-panel: #ffffff;
+	--vyasa-ink: #333333;
+	--vyasa-hairline: #eaeaea;
+	--vyasa-meta: #64748b;
+	--vyasa-label: #95a5a6;
+}
+
+html.theme-light,
+html {
+	--vyasa-paper: #fcfcfc;
+	--vyasa-ink: #333333;
+	--vyasa-stream-body-color: #334155;
+	--vyasa-stream-commentary-color: #4a5568;
+	--vyasa-hairline: #eaeaea;
+	--vyasa-meta: #64748b;
+	--vyasa-label: #95a5a6;
+}
+
+html.theme-dark {
+	--vyasa-paper: #1a1a1a;
+	--vyasa-ink: #e8e8e8;
+	--vyasa-stream-body-color: #e2e8f0;
+	--vyasa-stream-commentary-color: #94a3b8;
+	--vyasa-hairline: #333333;
+	--vyasa-meta: #94a3b8;
+	--vyasa-label: #64748b;
+}
+
+
+html.theme-parchment {
+	--vyasa-paper: #f3e6c8;
+	--vyasa-ink: #3c2a18;
+	--vyasa-stream-body-color: #3c2a18;
+	--vyasa-stream-commentary-color: #6b5344;
+	--vyasa-hairline: #c9b896;
+	--vyasa-meta: #8b6f56;
+	--vyasa-label: #a08970;
+}
+
+body {
+	font-family: var(--vyasa-font-body);
+	margin: 0;
+	padding: 2rem;
+	line-height: 1.6;
+	color: var(--vyasa-ink);
+	background-color: var(--vyasa-paper);
+}
+
+.content {
+	max-width: var(--vyasa-content-max-width);
+	margin: 0 auto;
+}
+
+.samhita,
+.padapatha,
+.bhashya,
+.verse,
+.rik,
+.mantra,
+.sutra,
+.mula,
+.vyakhya,
+.udaharana {
+	white-space: pre-line;
+	overflow-wrap: break-word;
+	margin: 0;
+}
+
+/* Grid: weave_layout injects packed html_blocks into .vyasa-block-{packedStream} columns. */
+.vyasa-block-samhita,
+.vyasa-block-sutra,
+.vyasa-block-padapatha,
+.vyasa-block-udaharana,
+.vyasa-block-vyakhya,
+.vyasa-block-sayana {
+	margin: 0;
+	padding: 0;
+}
+
+.vyasa-block-samhita,
+.vyasa-block-sutra,
+.vyasa-block-padapatha,
+.vyasa-block-udaharana {
+	font-family: var(--vyasa-font-deva);
+	font-size: var(--vyasa-stream-body-size);
+	font-weight: var(--vyasa-stream-body-weight);
+	line-height: var(--vyasa-stream-body-line);
+	color: var(--vyasa-stream-body-color);
+	font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "locl" 1;
+}
+
+.vyasa-block-vyakhya,
+.vyasa-block-sayana {
+	font-family: var(--vyasa-font-deva);
+	font-size: var(--vyasa-stream-commentary-size);
+	line-height: var(--vyasa-stream-commentary-line);
+	color: var(--vyasa-stream-commentary-color);
+}
+
+.vyasa-block-samhita .rik,
+.vyasa-block-samhita .mantra,
+.vyasa-block-samhita .verse,
+.vyasa-block-sutra .sutra,
+.vyasa-block-sutra .verse,
+.vyasa-block-padapatha .rik,
+.vyasa-block-padapatha .verse,
+.vyasa-block-udaharana .udaharana,
+.vyasa-block-udaharana .verse,
+.vyasa-block-vyakhya .vyakhya,
+.vyasa-block-vyakhya .verse,
+.vyasa-block-sayana .bhashya,
+.vyasa-block-sayana .verse {
+	white-space: pre-line;
+	overflow-wrap: break-word;
+}
