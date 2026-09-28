@@ -7,7 +7,7 @@ Shared **Project Vyasa** publisher assets for Sanskrit Wikisource content repos.
 - `work` CLI — `sources`, `list`, `build`, `publish`, `merge-catalog`
 - Catalog Pages: https://vyasa-sa-wikisource.github.io/publisher/catalog.json
 
-Crawl and extract stay in content repos. Veda pipelines still live in [`project-vyasa/sa.wikisource.org`](https://github.com/project-vyasa/sa.wikisource.org) until each work-set moves. `bun run catalog` merges `data/fragments/` into the Pages catalog. Those Veda rows use absolute `.vyview` URLs on the monorepo site. Bhāgavata is packed under `sa_wikisource/works/` and served next to `catalog.json`, because `content-puranas` is private.
+Crawl and extract stay in content repos. Veda pipelines still live in [`project-vyasa/sa.wikisource.org`](https://github.com/project-vyasa/sa.wikisource.org) until each work-set moves, and viewers keep that monorepo catalog for those works. `bun run catalog` merges `data/fragments/` into the org Pages catalog. Bhāgavata is packed under `sa_wikisource/works/` and served next to `catalog.json`, because `content-puranas` is private.
 
 ```bash
 bun install
