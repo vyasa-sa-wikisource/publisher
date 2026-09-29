@@ -53,6 +53,26 @@
       "type": "work",
       "language": "sa",
       "license": "CC-BY-SA-4.0"
+    },
+    {
+      "id": "garuda-purana",
+      "title": "गरुडपुराणम्",
+      "vyviewUrl": "garuda-purana/garuda-purana.vyview",
+      "updated": 1790671011,
+      "description": "Garuḍa Purāṇa from Sanskrit Wikisource",
+      "type": "work",
+      "language": "sa",
+      "license": "CC-BY-SA-4.0"
+    },
+    {
+      "id": "matsya-purana",
+      "title": "मत्स्यपुराणम्",
+      "vyviewUrl": "matsya-purana/matsya-purana.vyview",
+      "updated": 1790695886,
+      "description": "Matsya Purāṇa from Sanskrit Wikisource",
+      "type": "work",
+      "language": "sa",
+      "license": "CC-BY-SA-4.0"
     }
   ]
 }
