@@ -2,21 +2,11 @@ import { describe, expect, test } from "bun:test";
 import { parseArgs } from "./cli-args";
 
 describe("work CLI args", () => {
-  test("parses repeated fragments and dry-run", () => {
-    const args = parseArgs([
-      "merge-catalog",
-      "--fragment",
-      "a.json",
-      "--fragment",
-      "b.json",
-      "--out",
-      "catalog.json",
-      "--dry-run",
-    ]);
-    expect(args.command).toBe("merge-catalog");
-    expect(args.fragments).toEqual(["a.json", "b.json"]);
-    expect(args.out).toBe("catalog.json");
-    expect(args.dryRun).toBe(true);
+  test("parses a build target and its content root", () => {
+    const args = parseArgs(["build", "puranas", "--root", "../content-puranas"]);
+    expect(args.command).toBe("build");
+    expect(args.positionals).toEqual(["puranas"]);
+    expect(args.root).toBe("../content-puranas");
   });
 
   test("missing flag value names the example", () => {

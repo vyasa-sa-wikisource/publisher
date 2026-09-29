@@ -1,12 +1,11 @@
 #!/usr/bin/env bun
 /**
- * Pack/publish workspaces from a content-repo registry slice, and merge catalog fragments.
+ * Pack/publish workspaces from a content-repo registry slice.
  *
  *   bun run work sources
  *   bun run work list --root <content-repo>
  *   bun run work build <work-set-or-id> --root <content-repo>
  *   bun run work publish <work-set-or-id> --root <content-repo>
- *   bun run work merge-catalog --fragment <file.json> --out sa_wikisource/dist/catalog.json
  *   bun run work release <work-id> --root <content-repo> --repo <owner/name>
  */
 
@@ -14,14 +13,6 @@ import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { parseArgs } from "../src/lib/cli-args";
-import {
-  catalogFromFragments,
-  copyCatalogWorks,
-  copyPublisherStyles,
-  loadPublisherIdentity,
-  shellCatalog,
-  writeCatalog,
-} from "../src/lib/catalog-merge";
 import { defaultVyviewPath, planRelease } from "../src/lib/release";
 import {
   contentRootForSlice,
@@ -35,9 +26,7 @@ import {
   type WorksRegistry,
 } from "../src/lib/works-registry";
 
-const PUBLISHER_TOML = path.resolve("sa_wikisource/publisher.toml");
 const SOURCES_TOML = path.resolve("data/sources.toml");
-const FRAGMENTS_DIR = path.resolve("data/fragments");
 
 const HELP = `Usage:
   bun run work sources
@@ -45,23 +34,19 @@ const HELP = `Usage:
   bun run work list --slice <path/to/wikisource-works.toml>
   bun run work build <work-set-id|work-id> [...] --root <content-repo>
   bun run work publish <work-set-id|work-id> [...] --root <content-repo>
-  bun run work merge-catalog [--fragment <file.json> ...] --out <catalog.json> [--dry-run]
+  bun run work release <work-id> --root <content-repo> --repo <owner/name>
 
 vyasac must be on PATH for build and publish. Each content repo owns
-data/wikisource-works.toml. Catalog fragments are JSON objects with a
-publications array (the shape vyasac publish writes).
+data/wikisource-works.toml. vyasac publish writes that repo's works into
+sa_wikisource/dist/. bun run deploy publishes that directory. The monorepo
+catalog stays separate.
 
 Examples:
   bun run work sources
   bun run work list --root ../content-puranas
   bun run work build puranas --root ../content-puranas
-  bun run work merge-catalog --fragment ./fragment.json --out sa_wikisource/dist/catalog.json --dry-run
-  bun run work merge-catalog --out sa_wikisource/dist/catalog.json
   bun run work release bhagavata-purana --root ../content-puranas --repo vyasa-sa-wikisource/content-puranas
   bun run work release bhagavata-purana --root ../content-puranas --repo vyasa-sa-wikisource/content-puranas --yes
-
-With no --fragment, every JSON file in data/fragments is merged. An empty
-directory writes the publisher shell.
 `;
 
 function uniqueWorks(works: WorkRow[]): WorkRow[] {
@@ -239,39 +224,6 @@ function cmdRelease(input: {
   console.log(`url: https://github.com/${plan.repo}/releases/tag/${encodeURIComponent(plan.tag)}`);
 }
 
-function cmdMerge(fragments: string[], out: string | undefined, dryRun: boolean): void {
-  if (!out) {
-    throw new Error(
-      "Pass --out <catalog.json>.\n  bun run work merge-catalog --out sa_wikisource/dist/catalog.json",
-    );
-  }
-  if (!fs.existsSync(PUBLISHER_TOML)) throw new Error(`Missing ${PUBLISHER_TOML}`);
-  const paths = fragments.length > 0 ? fragments : defaultFragmentPaths();
-  const identity = loadPublisherIdentity(PUBLISHER_TOML);
-  const catalog = paths.length === 0 ? shellCatalog(identity) : catalogFromFragments(identity, paths);
-  console.log(`publications: ${catalog.publications.length}`);
-  for (const pub of catalog.publications) console.log(`  ${pub.id}\t${pub.vyviewUrl}`);
-  if (dryRun) {
-    console.log("dry-run: wrote nothing");
-    return;
-  }
-  writeCatalog(out, catalog);
-  const publisherDir = path.dirname(PUBLISHER_TOML);
-  const distDir = path.dirname(path.resolve(out));
-  copyPublisherStyles(publisherDir, distDir);
-  copyCatalogWorks(publisherDir, distDir);
-  console.log(`wrote ${out}`);
-}
-
-function defaultFragmentPaths(): string[] {
-  if (!fs.existsSync(FRAGMENTS_DIR)) return [];
-  return fs
-    .readdirSync(FRAGMENTS_DIR)
-    .filter((name) => name.endsWith(".json"))
-    .sort()
-    .map((name) => path.join(FRAGMENTS_DIR, name));
-}
-
 function main(): void {
   let parsed;
   try {
@@ -299,9 +251,6 @@ function main(): void {
         break;
       case "publish":
         cmdPack("publish", parsed.positionals, parsed.slice, parsed.root);
-        break;
-      case "merge-catalog":
-        cmdMerge(parsed.fragments, parsed.out, parsed.dryRun);
         break;
       case "release":
         cmdRelease({
