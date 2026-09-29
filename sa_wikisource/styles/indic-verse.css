@@ -9,7 +9,7 @@
 	*/
 	--vyasa-font-deva: "ITF Devanagari", "Kohinoor Devanagari", "Devanagari Sangam MN", "Devanagari MT", "Nirmala UI", "Sanskrit Text", "Noto Serif Devanagari", "Noto Sans Devanagari", sans-serif;
 	--vyasa-font-body: "Noto Serif", serif;
-	--vyasa-stream-body-size: 1.05rem;
+	--vyasa-stream-body-size: 1.25rem;
 	--vyasa-stream-body-line: 1.5;
 	--vyasa-stream-body-weight: 500;
 	--vyasa-stream-body-color: #334155;
@@ -89,6 +89,7 @@ body {
 /* Grid: weave_layout injects packed html_blocks into .vyasa-block-{packedStream} columns. */
 .vyasa-block-samhita,
 .vyasa-block-sutra,
+.vyasa-block-mula,
 .vyasa-block-padapatha,
 .vyasa-block-udaharana,
 .vyasa-block-vyakhya,
@@ -99,6 +100,7 @@ body {
 
 .vyasa-block-samhita,
 .vyasa-block-sutra,
+.vyasa-block-mula,
 .vyasa-block-padapatha,
 .vyasa-block-udaharana {
 	font-family: var(--vyasa-font-deva);
@@ -122,6 +124,7 @@ body {
 .vyasa-block-samhita .verse,
 .vyasa-block-sutra .sutra,
 .vyasa-block-sutra .verse,
+.vyasa-block-mula .verse,
 .vyasa-block-padapatha .rik,
 .vyasa-block-padapatha .verse,
 .vyasa-block-udaharana .udaharana,
