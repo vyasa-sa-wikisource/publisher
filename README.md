@@ -18,6 +18,8 @@ bun run work list --root ../content-puranas
 
 `vyasac` must be on `PATH` for `work build` / `work publish`. `content-puranas` is a sibling of this clone.
 
+`bun run deploy` publishes the whole `sa_wikisource/dist/` tree to the `gh-pages` branch, the same way the monorepo does. Pushing `main` also runs the Catalog workflow, which deploys that directory through GitHub Actions.
+
 Local catalog server (roots are relative to this directory):
 
 ```bash

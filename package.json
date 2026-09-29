@@ -8,10 +8,12 @@
   "scripts": {
     "work": "bun run scripts/work-cli.ts",
     "catalog": "bun run scripts/work-cli.ts merge-catalog --out sa_wikisource/dist/catalog.json",
+    "deploy": "gh-pages -d sa_wikisource/dist --dotfiles --nojekyll",
     "test": "bun test src"
   },
   "devDependencies": {
     "@types/bun": "^1.1.6",
+    "gh-pages": "^6.3.0",
     "typescript": "^5.5.4"
   }
 }
